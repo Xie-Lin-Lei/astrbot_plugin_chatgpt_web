@@ -1,0 +1,20 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: pip install markdownify beautifulsoup4 markdown-it-py
+      - name: Extract / normalize tests
+        run: |
+          python tests/test_extract.py
+          python tests/test_normalize.py
