@@ -1,0 +1,6 @@
+name: astrbot_plugin_chatgpt_web
+display_name: ChatGPT 网页版问答
+desc: 把 QQ 里的问题和图片转发到本机已登录的 ChatGPT 网页版，再把回答（含公式、表格和配图）渲染成图片发回 QQ。
+author: Xie-Lin-Lei
+repo: https://github.com/Xie-Lin-Lei/astrbot_plugin_chatgpt_web
+version: v1.1.0

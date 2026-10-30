@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+data/
+.idea/
+.vscode/
+tests/__pycache__/
+tests/.smoke-profile/
+tests/.inline-profile/
+tests/.ask-out/
+assets/render/

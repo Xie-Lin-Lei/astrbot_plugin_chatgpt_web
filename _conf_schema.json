@@ -1,0 +1,105 @@
+{
+  "passive": {
+    "description": "被动模式：在白名单会话里，普通消息（文字或图片）直接转发给 ChatGPT 网页版，不用加指令",
+    "type": "bool",
+    "default": true
+  },
+  "passive_groups": {
+    "description": "群里不需要 @ 机器人，也对所有消息生效（容易刷屏，按需打开）",
+    "type": "bool",
+    "default": false
+  },
+  "allowed_sessions": {
+    "description": "允许使用插件（被动模式 + gpt 指令）的会话，留空表示所有会话都允许。可以填会话 UMO（形如 aiocqhttp:GroupMessage:123456）、群号或 QQ 号，一行一个",
+    "type": "list",
+    "default": []
+  },
+  "ignore_prefixes": {
+    "description": "被动模式下忽略的消息前缀，避免把别的插件指令也转给 ChatGPT，一行一个",
+    "type": "list",
+    "default": [
+      "/",
+      "#",
+      "gpt",
+      "问gpt",
+      "找书",
+      "选书",
+      "以图找书"
+    ]
+  },
+  "reply_mode": {
+    "description": "回答形式：auto（公式/代码/长答案发渲染图，短答案发文字）、text（只发文字）、image（尽量发图）",
+    "type": "string",
+    "default": "auto"
+  },
+  "browser_channel": {
+    "description": "用哪个浏览器：auto（自动检测 Edge/Chrome）、msedge、chrome，或留空用 Playwright 自带 Chromium",
+    "type": "string",
+    "default": "auto"
+  },
+  "proxy": {
+    "description": "访问 ChatGPT 的代理，例如 http://127.0.0.1:7897。留空则自动使用环境变量 HTTPS_PROXY 或系统代理；都没有就直连",
+    "type": "string",
+    "default": ""
+  },
+  "browser_locale": {
+    "description": "浏览器语言（高级）。留空跟随系统；填 zh-CN 可固定中文界面",
+    "type": "string",
+    "default": ""
+  },
+  "browser_timezone": {
+    "description": "浏览器时区（高级）。留空跟随系统；例如 Asia/Shanghai",
+    "type": "string",
+    "default": ""
+  },
+  "headless": {
+    "description": "无界面运行浏览器。首次登录/遇到人机验证时建议先关掉，登录好再打开（无界面更容易被 Cloudflare 拦）",
+    "type": "bool",
+    "default": false
+  },
+  "ask_timeout": {
+    "description": "单次提问等待回答的最长时间（秒），推理模型慢的话可以调大",
+    "type": "int",
+    "default": 300
+  },
+  "ask_interval": {
+    "description": "两次请求之间的最小间隔（秒），避免短时间内连续提问触发 ChatGPT 风控",
+    "type": "int",
+    "default": 3
+  },
+  "hint_after": {
+    "description": "等待超过多少秒后，在 QQ 里发一条「还在等」的提示（秒）",
+    "type": "int",
+    "default": 30
+  },
+  "max_sessions": {
+    "description": "同时保留的 ChatGPT 对话页数量（每个 QQ 会话一个，超出按最久未用关闭）",
+    "type": "int",
+    "default": 4
+  },
+  "max_images": {
+    "description": "一条消息最多转发几张图片",
+    "type": "int",
+    "default": 4
+  },
+  "image_wait_seconds": {
+    "description": "只发图片时，先等这么多秒看你会不会补文字：等到了就把图片和文字合成一次提问；没等到才单独发图。0 表示不等待",
+    "type": "int",
+    "default": 8
+  },
+  "max_image_height": {
+    "description": "答案卡片最大高度（CSS 像素）；太长会自动缩小，缩小后仍超过就改发文字",
+    "type": "int",
+    "default": 8000
+  },
+  "image_prompt": {
+    "description": "只发图片、没有文字时，附加给 ChatGPT 的默认提示词",
+    "type": "text",
+    "default": "请看我发的图片，把里面的题目讲清楚：给出思路、推导过程和结论。"
+  },
+  "text_chunk": {
+    "description": "发文字答案时每条消息的最大字数（QQ 长消息会分多条发送）",
+    "type": "int",
+    "default": 1500
+  }
+}
